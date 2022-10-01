@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/oxemstudio/static/css/main.219ff90c.css",
+    "main.js": "/oxemstudio/static/js/main.264a275c.js",
+    "static/media/Nekst-Black.eot": "/oxemstudio/static/media/Nekst-Black.5fc4621c869412e7e801.eot",
+    "static/media/Nekst-Black.ttf": "/oxemstudio/static/media/Nekst-Black.dffaebf93d38d4c41536.ttf",
+    "static/media/Gilroy-Regular.eot": "/oxemstudio/static/media/Gilroy-Regular.19055ba082a9f78262f6.eot",
+    "static/media/Gilroy-Regular.ttf": "/oxemstudio/static/media/Gilroy-Regular.fa652e766b6a85a1f9cb.ttf",
+    "static/media/Nekst-Black.woff": "/oxemstudio/static/media/Nekst-Black.f0e2921efcf1112b1749.woff",
+    "static/media/Nekst-Black.woff2": "/oxemstudio/static/media/Nekst-Black.44814bfd3ba4a266cf1d.woff2",
+    "static/media/Gilroy-Regular.woff": "/oxemstudio/static/media/Gilroy-Regular.ebe86c0337572553acea.woff",
+    "static/media/Gilroy-Regular.woff2": "/oxemstudio/static/media/Gilroy-Regular.f6c9931fabe5a6eb3307.woff2",
+    "index.html": "/oxemstudio/index.html",
+    "main.219ff90c.css.map": "/oxemstudio/static/css/main.219ff90c.css.map",
+    "main.264a275c.js.map": "/oxemstudio/static/js/main.264a275c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.219ff90c.css",
+    "static/js/main.264a275c.js"
+  ]
+}
