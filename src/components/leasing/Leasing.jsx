@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {setMonthPay, setMouth, setTotalPay} from "../../redux/slice/calcSlice";
+import {leasingDispatch} from "../../utils/leasingDispatch";
 
 export const Leasing = () => {
     const [valueTrackLeasing, setValueTrackLeasing] = useState('')
@@ -18,26 +18,19 @@ export const Leasing = () => {
     useEffect(() => {
         const logger = () => {
             if(refLeasingReset.current.value > 60) {
-                dispatch(setMouth(60))
-                dispatch(setMonthPay())
-                dispatch(setTotalPay())
+                leasingDispatch(dispatch,60)
             } else if(refLeasingReset.current.value < 1) {
-                dispatch(setMouth(1))
-                dispatch(setMonthPay())
-                dispatch(setTotalPay())
+                leasingDispatch(dispatch, 1)
             }
         }
-        window.addEventListener('click', logger )
+        window.addEventListener('focusout', logger )
         return () => {
-            window.removeEventListener('click', logger)
+            window.removeEventListener('focusout', logger)
         }
     }, [months, dispatch])
 
     const handleChange = (e) => {
-        const event = e.target.value
-        dispatch(setMouth(event))
-        dispatch(setMonthPay())
-        dispatch(setTotalPay())
+        leasingDispatch(dispatch, e.target.value)
     }
 
     return (

@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-
 const initialState = {
     cost: 1000000,
     initialPayment: 10,
@@ -38,7 +37,6 @@ export const calcSlice = createSlice({
     }
 )
 
-// Action creators are generated for each case reducer function
 export const {setCost, setInitial, setMouth, setInitialPayInRub, setMonthPay, setTotalPay} = calcSlice.actions
 
 export default calcSlice.reducer

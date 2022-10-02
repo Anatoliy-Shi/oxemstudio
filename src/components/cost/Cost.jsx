@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {setCost, setInitialPayInRub, setMonthPay, setTotalPay} from "../../redux/slice/calcSlice";
+import {costDispatch} from "../../utils/costDispatch";
 
 export const Cost = () => {
     const [valueTrack, setValueTrack] = useState('')
@@ -19,30 +19,21 @@ export const Cost = () => {
     useEffect(() => {
         const logger = () => {
             if(refCostReset.current.value > 6000000) {
-                dispatch(setCost(6000000))
-                dispatch(setInitialPayInRub())
-                dispatch(setMonthPay())
-                dispatch(setTotalPay())
+                costDispatch(dispatch, 6000000)
             } else if(refCostReset.current.value < 1000000) {
-                dispatch(setCost(1000000))
-                dispatch(setInitialPayInRub())
-                dispatch(setMonthPay())
-                dispatch(setTotalPay())
+                costDispatch(dispatch, 1000000)
             }
         }
 
-        window.addEventListener('click', logger )
+        window.addEventListener('focusout', logger )
         return () => {
-            window.removeEventListener('click', logger)
+            window.removeEventListener('focusout', logger)
         }
     }, [cost, dispatch])
 
 
     const handleChange = (e) => {
-        dispatch(setCost(e.target.value))
-        dispatch(setInitialPayInRub())
-        dispatch(setMonthPay())
-        dispatch(setTotalPay())
+        costDispatch(dispatch, e.target.value)
     }
 
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {setInitialPayInRub, setInitial, setMonthPay, setTotalPay} from "../../redux/slice/calcSlice";
+import {initialDispatch} from "../../utils/initialDispatch";
 
 export const InitialPayment = () => {
     const [valueTrackPayment, setValueTrackPayment] = useState('')
@@ -16,39 +16,33 @@ export const InitialPayment = () => {
 
     useEffect(() => {
         const logger = () => {
-            if(refInitialReset.current.value > 60) {
-                dispatch(setInitial(60))
-                dispatch(setInitialPayInRub())
-                dispatch(setMonthPay())
-                dispatch(setTotalPay())
-            } else if(refInitialReset.current.value < 10) {
-                dispatch(setInitial(10))
-                dispatch(setInitialPayInRub())
-                dispatch(setMonthPay())
-                dispatch(setTotalPay())
+            if (refInitialReset.current.value > 60) {
+                initialDispatch(dispatch, 60)
+            } else if (refInitialReset.current.value < 10) {
+                initialDispatch(dispatch, 10)
             }
         }
-        window.addEventListener('click', logger )
+        window.addEventListener('focusout', logger)
         return () => {
-            window.removeEventListener('click', logger)
+            window.removeEventListener('focusout', logger)
         }
     }, [initialPayment, dispatch])
 
-
     const handleChange = (e) => {
-        dispatch(setInitial(e.target.value))
-        dispatch(setInitialPayInRub())
-        dispatch(setMonthPay())
-        dispatch(setTotalPay())
+        initialDispatch(dispatch, e.target.value)
     }
+
 
     return (
         <div className={"position"}>
             <h6>Первоначальный взнос</h6>
-                <input ref={refInitialReset} onChange={(e) => handleChange(e)}
-                       step="1" min="10" max="60"
-                       className='position__title payment' type='text' value={initialPayment}/>
-                <input disabled className={'number'} value={initialPayInRub}/>
+            <input disabled
+                type='text'
+                ref={refInitialReset} onChange={(e) => handleChange(e)}
+                step="any" min="10" max="60"
+                className='position__title payment'
+                value={initialPayment + '%'}/>
+            <p className={'number'}>{initialPayInRub} </p>
             <input ref={refInitial} className="range" onChange={(e) => handleChange(e)} type="range"
                    value={initialPayment} step="1" min="10" max="60"/>
         </div>

@@ -63,6 +63,18 @@ button {
   color: #FFFFFF;
   cursor: pointer;
   border: none;
+  outline: none;
+  &:hover {
+    background: #111111;
+  }
+  &:focus {
+    background: #575757;
+  }
+
+  &:disabled {
+    background: rgba(255, 149, 20, 0.4);
+  }
+
   @media only screen and (min-width: 768px) and (max-width: 1440px) {
     width: 345px;
   }
@@ -73,13 +85,6 @@ button {
     line-height: 20px;
   }
 
-  &:hover {
-    background: #111111;
-  }
-
-  &:disabled {
-    background: rgba(255, 149, 20, 0.4);
-  }
 }
 
 h6 {
@@ -109,7 +114,6 @@ h6 {
   background: #F3F3F4;
   width: 427px;
   border-radius: 16px;
-  border: none;
   font-style: normal;
   font-weight: 900;
   font-size: 30px;
@@ -118,6 +122,15 @@ h6 {
   padding: 16px 0 16px 24px;
   outline: none;
   font-family: 'Nekst-Black';
+  border: 2px solid #F3F3F4;
+  &:disabled{
+    opacity: 0.4;
+  }
+  &:focus {
+    background: #fff;
+    border: 2px solid #F3F3F4;
+    border-radius: 16px;
+  }
   @media only screen and (min-width: 1024px) and (max-width: 1440px) {
     width: 928px;
   }
@@ -136,11 +149,15 @@ h6 {
 .range {
   -webkit-appearance: none;
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 24px;
   width: 379px;
   height: 2px;
   cursor: pointer;
+  z-index: 5;
+  &:disabled{
+    opacity: 0.4;
+  }
   @media only screen and (min-width: 1024px) and (max-width: 1440px) {
     width: 880px;
   }
@@ -244,7 +261,7 @@ input[type="number"]:focus {
     font-family: 'Nekst-Black';
     @media only screen and (min-width: 1024px) and (max-width: 1440px) {
       right: 120px;
-      top: 52px;
+      top: 54px;
     }
     @media only screen and (min-width: 768px) and (max-width: 1023px) {
       right: 97px;
@@ -274,17 +291,43 @@ input[type="number"]:focus {
   font-size: 20px;
   cursor: text;
   outline: none;
+  border: 2px solid #EBEBEC;
+  &:before{
+    content: '!@';
+    color: red;
+    position: absolute;
+    top: 21px;
+    right: 33px;
+    z-index: 1;
+  }
+
+  &:focus {
+    background-color: #fff;
+  }
+  z-index: 1;
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     width: 67px;
     height: 48px;
-    top: 60px;
+    top: 58px;
     right: 50px;
   }
 }
 
+
 p.number {
-  margin-top: 0;
+  margin: 0;
+  position: relative;
+  &:after{
+    content: "₽";
+    position: absolute;
+    bottom: 18.5px;
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
+      flex-direction: column;
+      bottom: 22px;
+    }
+  }
 }
+
 
 
 .calc {
@@ -341,6 +384,12 @@ span {
   line-height: 90%;
   color: $primary-color;
   margin-top: 8px;
+  position: relative;
+  &:after{
+    content: "₽";
+    position: absolute;
+    bottom: 4.5px;
+  }
   @media only screen and (min-width: 1024px) and (max-width: 1440px) {
     margin-bottom: 44px;
   }
@@ -349,17 +398,21 @@ span {
     line-height: 20px;
     margin-bottom: 29px;
     margin-top: 2px;
+    &:after{
+      bottom: 2px;
+    }
   }
 }
 
 .sum {
   display: flex;
-  gap: 260px;
+  gap: 300px;
   @media only screen and (min-width: 1024px) and (max-width: 1440px) {
     margin-top: 44px;
   }
   @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    margin-top: 44px
+    margin-top: 44px;
+    gap: 180px;
   }
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     margin-top: 25px;
